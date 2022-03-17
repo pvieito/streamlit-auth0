@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-auth0",
-    version="1.0.3",
+    version="1.0.4",
     author="",
     author_email="",
     description="",
