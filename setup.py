@@ -15,6 +15,7 @@ setuptools.setup(
         # If your component has other Python dependencies, list
         # them here.
         "streamlit>=0.63",
-        "python-jose==3.3.0"
+        "PyJWT>=2.3.0",
+        "auth0-python>=3.21.0",
     ],
 )

@@ -12,31 +12,29 @@ const NavBar = (props) => {
 
   // eslint-disable-next-line
   const {
-    user,
     isAuthenticated,
     loginWithPopup,
-    getAccessTokenSilently,
+    getIdTokenClaims,
     logout,
   } = useAuth0();
 
   const logoutWithRedirect = () => {
     logout({ localOnly: true });
-    onRun(false);
+    onRun(null);
   }
 
   const getAccessToken = () => {
-    return getAccessTokenSilently();
+    return getIdTokenClaims();
   }
 
   if (isAuthenticated) {
     getAccessToken().then(
       (token) => {
-        user['token'] = token;
-        onRun(user);
+        onRun(token.__raw);
       }
     )
   } else {
-    onRun(false)
+    onRun(null)
   }
 
   return (
@@ -49,7 +47,7 @@ const NavBar = (props) => {
               className="btn-margin"
               onClick={() => {
                 loginWithPopup({}).then(() => {
-                  onRun(false)
+                  onRun(null)
                 })
               }}
             >
