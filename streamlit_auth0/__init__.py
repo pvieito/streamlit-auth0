@@ -32,14 +32,14 @@ def login_button(*, client_id, domain, key=None, ):
     token = _login_button(auth_setup={"clientId": client_id, "domain": domain}, key=key, default=0)
 
     if token:
-        import auth0.v3.authentication.token_verifier
+        from auth0.authentication import token_verifier
         import jwt
 
         issuer = f"https://{domain}/"
         jwks_url = f"{issuer}.well-known/jwks.json"
 
-        tv = auth0.v3.authentication.token_verifier.TokenVerifier(
-            signature_verifier=auth0.v3.authentication.token_verifier.AsymmetricSignatureVerifier(jwks_url),
+        tv = token_verifier.TokenVerifier(
+            signature_verifier=token_verifier.AsymmetricSignatureVerifier(jwks_url),
             issuer=issuer, audience=client_id)
         tv.verify(token)
         user_info = jwt.decode(token, options={"verify_signature": False})

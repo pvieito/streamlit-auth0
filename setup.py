@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-auth0",
-    version="1.0.4",
+    version="1.0.5",
     author="",
     author_email="",
     description="",
@@ -16,6 +16,6 @@ setuptools.setup(
         # them here.
         "streamlit>=0.63",
         "PyJWT>=2.3.0",
-        "auth0-python>=3.21.0",
+        "auth0-python>=4.0",
     ],
 )
